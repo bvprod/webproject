@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+    body {
+
+      color: #414141;
+      font: 400 17px/2em 'Source Sans Pro', sans-serif;
+    }
+
+    .select-box {
+      cursor: pointer;
+      position : relative;
+      max-width:  20em;
+      margin: 5em auto;
+      width: 100%;
+    }
+
+    .select,
+    .label {
+      color: #414141;
+      display: block;
+      font: 400 17px/2em 'Source Sans Pro', sans-serif;
+    }
+
+    .select {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      padding: 5px 0;
+      height: 40px;
+      opacity: 0;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      background: none transparent;
+      border: 0 none;
+    }
+    .select-box1 {
+      background: #ececec;
+    }
+
+    .label {
+      position: relative;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .open .label::after {
+     content: "▲";
+   }
+   .label::after {
+    content: "▼";
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px 15px;
+    border-left: 5px solid #fff;
+  }
+  @keyframes leaf-odd-grow {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes leaf-even-grow {
+    0% {
+      transform: rotate(-90deg) scale(0);
+    }
+    100% {
+      transform: rotate(-90deg) scale(1);
+    }
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 600px;
+
+    background-color: #d1cee0;
+  }
+
+  .trunk,
+  .branch {
+    border-radius: 25px;
+    background: linear-gradient(to right, #7f3333, #4d2020);
+  }
+
+  .trunk {
+    position: relative;
+    
+    width: 10px;
+    height: 500px;
+    margin: 0 auto;
+  }
+
+  .branch {
+    position: absolute;
+    
+    width: 5px;
+    
+    transform-origin: bottom center;
+  }
+
+  .branch:nth-child(even) {
+    transform: rotate(60deg);
+  }
+
+  .branch:nth-child(odd) {
+    transform: rotate(-60deg);
+  }
+
+  .branch:nth-child(1) {
+    top: 180px;
+    
+    height: 180px;
+  }
+
+  .branch:nth-child(2) {
+    top: 160px;
+
+    height: 150px;
+  }
+
+  .branch:nth-child(3) {
+    top: 120px;
+    
+    height: 150px;
+  }
+
+  .branch:nth-child(4) {
+    top: 100px;
+    
+    height: 120px;
+  }
+
+  .branch:nth-child(5) {
+    top: 60px;
+    
+    height: 120px;
+  }
+
+  .branch:nth-child(6) {
+    top: 55px;
+    
+    height: 80px;
+  }
+
+  .branch:nth-child(7) {
+    top: 10px;
+    
+    height: 80px;
+  }
+
+  .branch:nth-child(8) {
+    top: 5px;
+    
+    height: 40px;
+  }
+
+  .leaf {
+    position: absolute;
+    
+    width: 15px;
+    height: 15px;
+    
+    border-radius: 75% 0 75% 0;
+    background: linear-gradient(to right, #77ed9e, #53ad71);
+  }
+
+  .leaf:nth-child(odd) {
+    left: 100%;
+    
+    transform-origin: 0% 100%;
+    animation-name: leaf-odd-grow;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+  }
+
+  .leaf:nth-child(even) {  
+    left: -150%;
+    
+    transform-origin: 50% 100%;
+    animation-name: leaf-even-grow;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+  }
+
+  .leaf:nth-child(1) {
+    top: 5px;
+    
+    animation-delay: 3.5s;
+  }
+
+  .leaf:nth-child(2) {
+    top: 20px;
+    
+    animation-delay: 3s;
+  }
+
+  .leaf:nth-child(3) {
+    top: 50px;
+    
+    animation-delay: 2.5s;
+  }
+
+  .leaf:nth-child(4) {
+    top: 65px;
+    
+    animation-delay: 2s;
+  }
+
+  .leaf:nth-child(5) {
+    top: 95px;
+    
+    animation-delay: 1.5s;
+  }
+
+  .leaf:nth-child(6) {
+    top: 110px;
+    
+    animation-delay: 1s;
+  }
+
+  .leaf:nth-child(7) {
+    top: 140px;
+    
+    animation-delay: 0.5s;
+  }
+</style>
+<script type="text/javascript">
+  function linklist(what){
+    var selectedopt=what.options[what.selectedIndex]
+    if (document.getElementById && selectedopt.getAttribute("target")=="new")
+      window.open(selectedopt.value)
+    else
+      window.location=selectedopt.value
+  }
+</script>
+</head>
+
+<body background="32.png"  data-lang="RU" data-country="RU">
+
+  <!--allrecords-->
+  <div >
+    <div style="padding-top:15px;padding-bottom:20px; " >
+      <!-- T017 -->    
+      <div style="text-align: center;"><div style="font-size: 28px;"><span style="line-height: 14px; font-size: 28px;">﻿</span><span style="font-size: 28px; text-align: center;">Большаков Ярослав</span><span style="font-size: 20px;">﻿</span></div></div>      <div style="text-align: center;"><span style="font-size: 20px; text-align: center;">Моя жизнь</span></div>       
+    </div>
+    <form name="menu">
+      <select name="sel" onChange="linklist(document.menu.sel)">
+        <option value="#">Полезные ссылки</option>
+        <option value="https://www.instagram.com/bv.prod" target="new">Инстаграм</option>
+        <option value="https://vk.com/minddiscoverer" target="new">ВК</option>
+        <option value="https://coronavirus-monitor.ru/" target="new">GitHub</option>
+      </select>
+    </form>
+
+    <div style="padding-top:0px;padding-bottom:75px; ">
+      <!-- T194 -->
+
+      <div>
+        <p style="float:  right;  margin: 7px 40px 7px 7px;">
+          <img  width="450px" height="350px" src="я.jpg">
+        </p>
+        <h1>Обо мне</h1>
+        <p  style="color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px;">Меня зовут Ярослав, 21 год, студент 4-го курса Московского Государственного Строительного Университета (МГСУ), учусь на кафедре информационных систем, технологий и автоматизации в строительстве (ИСТАС). Закончил обучение на военной кафедре вуза, осталось только доучиться и получить диплом, а вместе с ним и военный билет. Интересуюсь машинным обучением и нейросетями, также увлекаюсь инвестициями и биржей, чем в свободное время и занимаюсь (прохожу курсы по машинному обучению и изучаю фундаментальный и технический анализ рынка ценных бумаг). В сфере машинного обучения привлекает профессия BigData Engineer и работа с данными в целом.
+        </p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="canvas">
+        <div class="tree">
+          <div class="trunk">
+            <div class="branch">
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+            </div>
+            <div class="branch">
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+            </div>
+            <div class="branch">
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+            </div>
+            <div class="branch">
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+            </div>
+            <div class="branch">
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+            </div>
+            <div class="branch">
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+            </div>
+            <div class="branch">
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+              <div class="leaf"></div>
+            </div>
+            <div class="branch">
+              <div class="leaf"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p style="float:  left;  margin: 7px 40px 7px 7px;">
+          <img  width="550px" height="400px" src="машинное обучение.jpg">
+        </p>
+        <h1>Машинное обучение</h1>
+        <h2><span class="mw-headline" id="Способы_машинного_обучения">Что я знаю про машинное обучение, если брать раздел википедии</span></h2>
+        <p>Раздел машинного обучения, с одной стороны, образовался в результате разделения науки о нейросетях на методы обучения сетей и виды топологий их архитектуры, с другой стороны&#160;— вобрал в себя методы математической статистики. Указанные ниже способы машинного обучения исходят из случая использования нейросетей, хотя существуют и другие методы, использующие понятие обучающей выборки&#160;— например, дискриминантный анализ, оперирующий обобщённой дисперсией и ковариацией наблюдаемой статистики, или байесовские классификаторы. Базовые виды нейросетей, такие как перцептрон и многослойный перцептрон (а также их модификации), могут обучаться как с учителем, так и без учителя, с подкреплением и самоорганизацией. Но некоторые нейросети и большинство статистических методов можно отнести только к одному из способов обучения. Поэтому, если нужно классифицировать методы машинного обучения в зависимости от способа обучения, будет некорректным относить нейросети к определенному виду, правильнее было бы типизировать алгоритмы обучения нейронных сетей.
+        </p>
+        <br>
+        <br>
+
+        <ul><li><a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81_%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%BC" title="Обучение с учителем">Обучение с учителем</a>&#160;— для каждого прецедента задаётся пара «ситуация, требуемое решение»:</li></ul>
+        <ol><li><a href="https://ru.wikipedia.org/wiki/%D0%98%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%B0%D1%8F_%D0%BD%D0%B5%D0%B9%D1%80%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F_%D1%81%D0%B5%D1%82%D1%8C" class="mw-redirect" title="Искусственная нейронная сеть">Искусственная нейронная сеть</a>
+          <ol><li><a href="https://ru.wikipedia.org/wiki/%D0%93%D0%BB%D1%83%D0%B1%D0%BE%D0%BA%D0%BE%D0%B5_%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5" title="Глубокое обучение">Глубокое обучение</a></li></ol></li>
+          <li><a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_%D0%BA%D0%BE%D1%80%D1%80%D0%B5%D0%BA%D1%86%D0%B8%D0%B8_%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8" title="Метод коррекции ошибки">Метод коррекции ошибки</a></li>
+          <li><a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D0%BD%D0%BE%D0%B3%D0%BE_%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F_%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8" title="Метод обратного распространения ошибки">Метод обратного распространения ошибки</a></li>
+          <li><a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_%D0%BE%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D1%85_%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2" title="Метод опорных векторов">Метод опорных векторов</a></li></ol>
+          <ul><li><a href="https://ru.wikipedia.org//wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B1%D0%B5%D0%B7_%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8F" title="Обучение без учителя">Обучение без учителя</a>&#160;— для каждого прецедента задаётся только «ситуация», требуется сгруппировать объекты в <a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7" title="Кластерный анализ">кластеры</a>, используя данные о попарном сходстве объектов, и/или понизить размерность данных:</li></ul>
+          <ol><li><a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D1%8C%D1%84%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BF%D0%BE%D0%B4%D0%BA%D1%80%D0%B5%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F" title="Альфа-система подкрепления">Альфа-система подкрепления</a></li>
+            <li><a href="https://ru.wikipedia.org/w/index.php?title=%D0%93%D0%B0%D0%BC%D0%BC%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D0%BF%D0%BE%D0%B4%D0%BA%D1%80%D0%B5%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&amp;action=edit&amp;redlink=1" class="new" title="Гамма-система подкрепления (страница отсутствует)">Гамма-система подкрепления</a></li>
+            <li><a href="https://ru.wikipedia.org/wiki/K-means" class="mw-redirect" title="K-means">Метод ближайших соседей</a></li></ol>
+            <ul><li><a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81_%D0%BF%D0%BE%D0%B4%D0%BA%D1%80%D0%B5%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC" title="Обучение с подкреплением">Обучение с подкреплением</a>&#160;— для каждого прецедента имеется пара «ситуация, принятое решение»:</li></ul>
+            <ol><li><a href="https://ru.wikipedia.org//wiki/%D0%93%D0%B5%D0%BD%D0%B5%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC" title="Генетический алгоритм">Генетический алгоритм</a>.</li></ol>
+            <ul><li>Активное обучение&#160;— отличается тем, что обучаемый алгоритм имеет возможность самостоятельно назначать следующую исследуемую ситуацию, на которой станет известен верный ответ:</li>
+              <li><i><a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81_%D1%87%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%BD%D1%8B%D0%BC_%D0%BF%D1%80%D0%B8%D0%B2%D0%BB%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC_%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8F" title="Обучение с частичным привлечением учителя">Обучение с частичным привлечением учителя</a></i> (<a href="/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA" title="Английский язык">англ.</a>&#160;<span lang="en" style="font-style:italic;">semi-supervised learning</span>)&#160;— для части прецедентов задается пара «ситуация, требуемое решение», а для части&#160;— только «ситуация»</li>
+              <li><a href="https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B0%D0%BD%D1%81%D0%B4%D1%83%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5_%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5" title="Трансдуктивное обучение">Трансдуктивное обучение</a>&#160;— обучение с частичным привлечением учителя, когда прогноз предполагается делать только для прецедентов из тестовой выборки</li>
+              <li><i>Многозадачное обучение</i> (<a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA" title="Английский язык">англ.</a>&#160;<span lang="en" style="font-style:italic;">multi-task learning</span>)&#160;— одновременное обучение группе взаимосвязанных задач, для каждой из которых задаются свои пары «ситуация, требуемое решение»</li>
+              <li><i>Многовариантное обучение</i> (<a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA" title="Английский язык">англ.</a>&#160;<span lang="en" style="font-style:italic;">multiple-instance learning</span>)&#160;— обучение, когда прецеденты могут быть объединены в группы, в каждой из которых для всех прецедентов имеется «ситуация», но только для одного из них (причем, неизвестно какого) имеется пара «ситуация, требуемое решение»</li>
+              <li><a href="https://ru.wikipedia.org/wiki/%D0%91%D1%83%D1%81%D1%82%D0%B8%D0%BD%D0%B3" title="Бустинг">Бустинг</a> (<a href="https://ru.wikipedia.org//wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA" title="Английский язык">англ.</a>&#160;<span lang="en" style="font-style:italic;">boosting</span> — улучшение) — это процедура последовательного построения композиции алгоритмов машинного обучения, когда каждый следующий алгоритм стремится компенсировать недостатки композиции всех предыдущих алгоритмов.</li>
+              <li><a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%B9%D0%B5%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F_%D1%81%D0%B5%D1%82%D1%8C" title="Байесовская сеть">Байесовская сеть</a></li></ul>
+              <h2><span id=".D0.9A.D0.BB.D0.B0.D1.81.D1.81.D0.B8.D1.87.D0.B5.D1.81.D0.BA.D0.B8.D0.B5_.D0.B7.D0.B0.D0.B4.D0.B0.D1.87.D0.B8.2C_.D1.80.D0.B5.D1.88.D0.B0.D0.B5.D0.BC.D1.8B.D0.B5_.D1.81_.D0.BF.D0.BE.D0.BC.D0.BE.D1.89.D1.8C.D1.8E_.D0.BC.D0.B0.D1.88.D0.B8.D0.BD.D0.BD.D0.BE.D0.B3.D0.BE_.D0.BE.D0.B1.D1.83.D1.87.D0.B5.D0.BD.D0.B8.D1.8F"></span><span class="mw-headline" id="Классические_задачи,_решаемые_с_помощью_машинного_обучения">Классические задачи, решаемые с помощью машинного обучения</span></span></h2>
+              <ul><li><a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F_(%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0)" class="mw-redirect" title="Классификация (задача)">Классификация</a>, как правило, выполняется с помощью <a href="/wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81_%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%BC" title="Обучение с учителем">обучения с учителем</a> на этапе собственно обучения.</li>
+                <li><a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F" class="mw-redirect" title="Кластеризация">Кластеризация</a>, как правило, выполняется с помощью <a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B1%D0%B5%D0%B7_%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8F" title="Обучение без учителя">обучения без учителя</a></li>
+                <li><a href="https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B3%D1%80%D0%B5%D1%81%D1%81%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7" title="Регрессионный анализ">Регрессия</a>, как правило, выполняется с помощью <a href="/wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81_%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D0%B5%D0%BC" title="Обучение с учителем">обучения с учителем</a> на этапе тестирования, является частным случаем <a href="https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B8_%D0%BF%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F" title="Задачи прогнозирования">задач прогнозирования</a>.</li>
+                <li>Понижение размерности данных и их визуализация выполняется с помощью <a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B1%D0%B5%D0%B7_%D1%83%D1%87%D0%B8%D1%82%D0%B5%D0%BB%D1%8F" title="Обучение без учителя">обучения без учителя</a></li>
+                <li>Восстановление плотности распределения вероятности по набору данных</li>
+                <li>Одноклассовая классификация и выявление новизны</li>
+                <li>Построение ранговых зависимостей</li></ul>
+                <p>Я также применял машинное обучение связанное с инвестиционными идеями, например, тренировка модели ARIMA на временных данных цены актива, с целью получения предсказания по цене актива. Затем эти данные формировали признаки для следующей модели, которая обучалась уже на совокупности полученных данных из предыдущих моделей.
+                </p>
+              </div>   
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+
+
+              <div>
+                <p style="float:  right;  margin: 7px 40px 7px 7px;">
+                  <img  width="550px" height="400px" src="инвестиции.png">
+                </p>
+                <h1>Инвестиции и анализ рынка</h1>
+                <h2><span class="mw-headline" id="Способы_машинного_обучения">Что это такое и как с этим можно работать</span></h2>
+                <p  style="color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px;">Инвестиции (англ. Investment) — размещение капитала с целью получения прибыли. Инвестиции являются неотъемлемой частью современной экономики. От кредитов инвестиции отличаются степенью риска для инвестора (кредитора) — кредит и проценты необходимо возвращать в оговорённые сроки независимо от прибыльности проекта, инвестиции (инвестированный капитал) возвращаются и приносят доход только в прибыльных проектах. Если проект убыточен — инвестиции могут быть утрачены полностью или частично.
+
+                </p>
+                <p  style="color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px;">Рынок цеенных бумаг, фондовый рынок (англ. securities market, англ. stock market, англ. equity market) — совокупность экономических отношений по поводу выпуска и обращения ценных бумаг между его участниками.
+
+                </p>
+                <h2><span class="mw-headline" id="Способы_машинного_обучения">Методы анализа рынка ценных бумаг</span></h2>
+                <p  style="color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px;">Для анализа рынка ценных бумаг используются методы фундаментального и технического анализа. Фундаментальный анализ предусматривает изучение текущей финансово-экономической ситуации в экономике в целом, ее отраслях и на конкретных предприятиях для определения подлинной стоимости финансовых инструментов и осуществления долгосрочных инвестиций. Технический анализ основан на предположении о том, что информация о состоянии рынка отражает как фундаментальные факторы, лежащие в основе стоимости ценных бумаг, гак и рыночную психологию покупателей и продавцов. Он представляет собой графическое и аналитическое изучение временны́х рядов фондового рынка (динамики цен и объема совершенных сделок) с целью проведения краткосрочных инвестиций и спекулятивных операций. Рассмотрим эти методы подробнее. </p>
+
+                <h2><span class="mw-headline" id="Способы_машинного_обучения">Фундаментальный анализ</span></h2>
+                <p  style="color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px;">В основе фундаментального анализа лежит утверждение о том, что для успешных операций на фондовом рынке необходимо полное знание макроэкономических показателей и их динамики. Курсы ценных бумаг в конечном счете определяются фундаментальными факторами, которые находят свое отражение в основных статистических показателях состояния национальной экономики. Современная экономическая теория устанавливает набор таких факторов и описывает характер их воздействия на стоимость ценных бумаг. При фундаментальном анализе строятся многопараметрические модели влияния макроэкономических факторов на цену финансовых инструментов. Инвесторы, осуществляющие долгосрочные финансовые вложения, используют эти модели для выбора стратегии и объектов инвестиций, определяя уровень риска и ожидаемой доходности финансовых активов, в результате чего достигается оптимальная структура инвестиционного портфеля.</p>
+
+                <h2><span class="mw-headline" id="Способы_машинного_обучения">Технический анализ</span></h2>
+                <p  style="color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px;">Предметом технического анализа является изучение динамики биржевой информации, представленной в виде графиков цен за предыдущие периоды времени, с целью прогнозирования будущего направления движения их курса.
+
+                  Основные положения технического анализа изложены в теории Доу и сформулированы в виде следующих аксиом:
+                  <ul>
+                    <li>цена учитывает все происходящие события;</li>
+                    <li>движение цен подвержено тенденциям;</li>
+                    <li>история на фондовом рынке повторяется.</li>
+                  </ul>
+                </p>
+                <p  style="color: #333333; font-family: Georgia, serif; font-size: 18px; line-height: 28px; margin: 0 0 28px;">Лично я при анализе рынка стараюсь совмещать фундаментальный анализ с техническим, определяя настроение рынка с помощью фундаментального анализа и делая предсказания по цене и по длительности тренда с помощью технического анализа. В техническом анализе использую такие индикаторы, как скользящие средние, индекс относительной силы (RSI), индикатор Stoch, и индикатор сжатия в моменте (Squeeze momentum indicator). Иногда прибегаю к помощи VWAP.</p>
+              </div>     
+            </div>
+          </div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/8irKvF7Y-78" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!--/allrecords-->
+        </body>
+        </html>
